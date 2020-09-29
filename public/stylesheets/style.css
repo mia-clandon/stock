@@ -1,0 +1,34 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+.nav_menu a{
+  border: 1px solid black;
+  font-family: "Times New Roman";
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  word-wrap: break-word;
+  padding: 10px;
+}
+.nav_menu ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nav_menu li{
+  list-style-type: none;
+}
+form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+form input{
+  padding: 5px;
+}

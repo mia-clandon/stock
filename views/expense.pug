@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    form(method="post" action="/expense/expense-part")
+        label(for="name") Название принтера
+        select#name(name="name")
+            option(value="шарик") Шарик
+            option(value="рик") Рик
+            option(value="китайцы") Китайцы
+            option(value="177") 177
+            option(value="конь") Конь
+        label(for="part") Название запчасти
+        input#part(type="text" name="part" value="")
+        label(for="amount") Количество
+        input#amount(type="number" name="amount" value="")
+        label(for="date") Дата
+        input#date(type="date" name="date" value="")
+        input(type="submit" value="Добавить")

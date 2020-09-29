@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous")
+  body
+    h1= title
+    div.nav_menu
+      ul
+        li
+          a(href="/stock") История приходов/расходов
+        li
+          a(href="/stock-add") История приходов
+        li
+          a(href="/stock-expense") История расходов
+        li
+          a(href="/add") Приход запчастей
+        li
+          a(href="/expense") Расход запчастей
+        li
+          a(href="/parts/add-new-parts") Добавление запчастей
+        li
+          a(href="/parts/printers") Наличие запчастей
+    block content
