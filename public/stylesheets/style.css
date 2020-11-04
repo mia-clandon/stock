@@ -5,7 +5,7 @@ body {
 a {
   color: #00B7FF;
 }
-.nav_menu a{
+.nav_menu a, .nav_menu_printers a{
   border: 1px solid black;
   font-family: "Times New Roman";
   font-size: 20px;
@@ -14,13 +14,13 @@ a {
   word-wrap: break-word;
   padding: 10px;
 }
-.nav_menu ul{
+.nav_menu ul, .nav_menu_printers ul{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
-.nav_menu li{
+.nav_menu li, .nav_menu_printers li{
   list-style-type: none;
 }
 form{
@@ -31,4 +31,15 @@ form{
 }
 form input{
   padding: 5px;
+}
+.message{
+  font-size: 25px;
+  color: red;
+}
+.messageSuccess{
+  font-size: 25px;
+  color: lime;
+}
+h4{
+  text-align: center;
 }

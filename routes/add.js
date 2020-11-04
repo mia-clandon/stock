@@ -4,8 +4,16 @@ const pool = require('../core/db/pool');
 const {getStockCreate} = require('../core/db/models/modelStock');
 
 router.get('/', function (req, res, next) {
-    res.render('add', {title: 'Расход запчастей'})
+    const query = "select * from parts";
+    pool.query(query, function (err, rows) {
+        if(err){
+            res.render('add', {title:"Приход запчастей", data: ''})
+        } else {
+            res.render('add', {title:"Приход запчастей", data: rows})
+        }
+    })
 });
+
 router.post('/add-part', function (req, res, next) {
     const data = [req.body.name];
     let result_total;
@@ -15,8 +23,8 @@ router.post('/add-part', function (req, res, next) {
         if (err) {
             throw err;
         }
-        const lastAmountPart = rows[0].current_amount;
-        if (lastAmountPart > 0) {
+        if (rows > 0) {
+            const lastAmountPart = rows[0].current_amount;
             result_total = parseInt(req.body.amount) + parseInt(lastAmountPart);
         } else {
             result_total = parseInt(req.body.amount);
@@ -31,9 +39,9 @@ router.post('/add-part', function (req, res, next) {
         };
         getStockCreate(stockInput, function (lastId) {
             if (lastId) {
-                res.render('stock');
+                res.render('index', {messageSuccess: "Успешно добавлено"});
             } else {
-                console.log("Что-то пошло не так");
+                res.render('index', {message: "Что-то пошло не так"})
             }
         });
     });

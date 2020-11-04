@@ -5,7 +5,14 @@ const {getStockCreate} = require('../core/db/models/modelStock');
 
 
 router.get('/', function (req, res, next) {
-    res.render('expense', {title: 'Расход запчастей'})
+    const query = "select * from parts";
+    pool.query(query, function (err, rows) {
+        if(err){
+            res.render('expense', {title:"Расход запчастей", data: ''})
+        } else {
+            res.render('expense', {title:"Расход запчастей", data: rows})
+        }
+    })
 });
 router.post('/expense-part', function (req, res, next) {
     const data = [req.body.name];
@@ -17,26 +24,26 @@ router.post('/expense-part', function (req, res, next) {
             throw err;
         }
         const lastAmountPart = rows[0].current_amount;
-        if (lastAmountPart > 0) {
-            result_total = parseInt(lastAmountPart)-parseInt(req.body.amount);
+            if (lastAmountPart > 0) {
+                result_total = parseInt(lastAmountPart) - parseInt(req.body.amount);
+                const stockInput = {
+                    printer: req.body.name,
+                    part: req.body.part,
+                    current_amount: result_total,
+                    type: typeOperation,
+                    amount: req.body.amount,
+                    date: req.body.date
+                };
+                getStockCreate(stockInput, function (lastId) {
+                    if (lastId) {
+                        res.render('index', {messageSuccess: "Успешно добавлено"});
+                    } else {
+                        res.render('index', {message: "Что-то пошло не так"});
+                    }
+                });
         } else {
-            result_total = parseInt(req.body.amount);
+            res.render('index', {message: "Нельзя израсходовать больше, чем имеется на складе"})
         }
-        const stockInput = {
-            printer: req.body.name,
-            part: req.body.part,
-            current_amount: result_total,
-            type: typeOperation,
-            amount: req.body.amount,
-            date: req.body.date
-        };
-        getStockCreate(stockInput, function (lastId) {
-            if (lastId) {
-                res.render('stock');
-            } else {
-                console.log("Что-то пошло не так");
-            }
-        });
     });
 });
 module.exports = router;

@@ -6,11 +6,12 @@ router.get('/', function (req, res, next) {
     const query = "select * from stock_parts where type='Приход'";
     pool.query(query, function (err, rows) {
         if(err){
-            res.render('stock-add', {title: "История приходов", data: ''})
+            res.render('stock', {title: "История прихода запчастей", data: ''})
         } else {
-            res.render('stock-add', {title: "История приходов", data: rows})
+            res.render('stock', {title: "История прихода запчастей", data: rows})
         }
     })
 });
+
 
 module.exports = router;

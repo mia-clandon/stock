@@ -1,4 +1,21 @@
 extends layout
 
 block content
+    table(style="width:100%")
+        tr
+            th Название принтера
+            th Название запчасти
+            th Текущее количество
+            th Приход/Расход
+            th Количество
+            th Дата
+            if data.length
+                each item in data
+                    tr
+                        td= item.printer
+                        td= item.part
+                        td=item.current_amount
+                        td=item.type
+                        td=item.amount
+                        td=item.date
 

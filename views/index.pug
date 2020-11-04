@@ -1,3 +1,17 @@
 extends layout
 
 block content
+    h4 Функционал
+    p.message= message
+    p.messageSuccess= messageSuccess
+    ul
+        li Отследить для всех принтеров &#160;
+            ul
+                li
+                    a(href="/stock") историю приходов/расходов
+                li
+                    a(href="/stock-add") историю приходов
+                li
+                    a(href="/stock-expense") историю расходов
+                li
+                    a(href="/parts/printers") наличие запчастей

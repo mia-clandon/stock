@@ -1,3 +1,33 @@
 extends ../layout
 
 block content
+    h4 По принтерам
+    div.nav_menu_printers
+        ul
+            li
+                a(href="/parts/printer1") Шарик
+            li
+                a(href="/parts/printer2") Рик
+            li
+                a(href="/parts/printer3") Китайцы
+            li
+                a(href="/parts/printer4") 177
+            li
+                a(href="/parts/printer5") Конь
+
+    table(style="width:100%")
+        tr
+            th Серийный номер
+            th Название на русском
+            th Название на латыни
+            th Принтер
+            th Количество
+            if data.length
+                each item in data
+                    tr
+                        td=item.serial_id
+                        td=item.title_rus
+                        td=item.title_latin
+                        td=item.printer
+                        td=item.current_amount
+

@@ -4,13 +4,15 @@ block content
     form(method="post" action="/add/add-part")
         label(for="name") Название принтера
         select#name(name="name")
-            option(value="шарик") Шарик
-            option(value="рик") Рик
-            option(value="китайцы") Китайцы
+            option(value="Шарик") Шарик
+            option(value="Рик") Рик
+            option(value="Китайцы") Китайцы
             option(value="177") 177
-            option(value="конь") Конь
+            option(value="Конь") Конь
         label(for="part") Название запчасти
-        input#part(type="text" name="part" value="")
+        select#part(name="part")
+            each item in data
+                option(value=item.title_rus) #{item.title_rus}
         label(for="amount") Количество
         input#amount(type="number" name="amount" value="")
         label(for="date") Дата
