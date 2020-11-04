@@ -11,7 +11,6 @@ router.post('/add-new-part', function (req, res, next) {
         serial_id: req.body.serial_id,
         title_rus: req.body.title_rus,
         title_latin: req.body.title_latin,
-        printer: req.body.name
     };
     getCreatePartPrinter(partInput, function (lastId) {
         if (lastId) {

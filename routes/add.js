@@ -15,15 +15,18 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/add-part', function (req, res, next) {
-    const data = [req.body.name];
+    // const data = [req.body.name];
+    const data = [[req.body.name], [req.body.part]];
     let result_total;
     const typeOperation = "Приход";
-    const query = "select current_amount from stock_parts where printer = (?) and id in (select max(id) from stock_parts)";
+    const query = "select current_amount from stock_parts where printer = ? and part = ? order by id desc limit 1";
+
+    // const query = "select current_amount from stock_parts where printer = (?) and id in (select max(id) from stock_parts)";
     pool.query(query, data, function (err, rows) {
         if (err) {
             throw err;
         }
-        if (rows > 0) {
+        if (rows.length > 0) {
             const lastAmountPart = rows[0].current_amount;
             result_total = parseInt(req.body.amount) + parseInt(lastAmountPart);
         } else {

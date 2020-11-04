@@ -19,11 +19,6 @@ const addNewPartsRouter = require('./routes/parts/addNewPart');
 const showStockAddRouter = require('./routes/stock-add');
 const showStockExpenseRouter = require('./routes/stock-expense');
 const showPrintersPartsRouter = require('./routes/parts/printers');
-const showPrinters1PartsRouter = require('./routes/parts/printer1');
-const showPrinters2PartsRouter = require('./routes/parts/printer2');
-const showPrinters3PartsRouter = require('./routes/parts/printer3');
-const showPrinters4PartsRouter = require('./routes/parts/printer4');
-const showPrinters5PartsRouter = require('./routes/parts/printer5');
 
 const app = express();
 
@@ -55,11 +50,7 @@ app.use('/parts/add-new-parts', addNewPartsRouter);
 app.use('/stock-add', showStockAddRouter);
 app.use('/stock-expense', showStockExpenseRouter);
 app.use('/parts/printers', showPrintersPartsRouter);
-app.use('/parts/printer1', showPrinters1PartsRouter);
-app.use('/parts/printer2', showPrinters2PartsRouter);
-app.use('/parts/printer3', showPrinters3PartsRouter);
-app.use('/parts/printer4', showPrinters4PartsRouter);
-app.use('/parts/printer5', showPrinters5PartsRouter);
+
 
 app.use(function(req, res, next) {
   next(createError(404));

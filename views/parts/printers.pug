@@ -2,19 +2,14 @@ extends ../layout
 
 block content
     h4 По принтерам
-    div.nav_menu_printers
-        ul
-            li
-                a(href="/parts/printer1") Шарик
-            li
-                a(href="/parts/printer2") Рик
-            li
-                a(href="/parts/printer3") Китайцы
-            li
-                a(href="/parts/printer4") 177
-            li
-                a(href="/parts/printer5") Конь
-
+    form.form-horizontal(role="form" method="post" action="/parts/printers/searchPartsOfPrinters" class="form_mailing")
+        select#name(name="name")
+            option(value="Шарик") Шарик
+            option(value="Рик") Рик
+            option(value="Китайцы") Китайцы
+            option(value="177") 177
+            option(value="Конь") Конь
+        button#btn-signup.btn.btn-info(type="submit") Поиск
     table(style="width:100%")
         tr
             th Серийный номер

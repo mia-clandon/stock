@@ -15,15 +15,18 @@ router.get('/', function (req, res, next) {
     })
 });
 router.post('/expense-part', function (req, res, next) {
-    const data = [req.body.name];
+    const data = [[req.body.name], [req.body.part]];
     let result_total;
     const typeOperation = "Расход";
-    const query = "select current_amount from stock_parts where printer = (?) and id in (select max(id) from stock_parts)";
-    pool.query(query, data, function (err, rows) {
+    // const query = "select current_amount from stock_parts where printer = (?) and id in (select max(id) from stock_parts)";
+    const query = "select current_amount from stock_parts where printer = ? and part = ? order by id desc limit 1";
+
+    pool.query(query, data ,  function (err, rows) {
         if (err) {
             throw err;
         }
-        const lastAmountPart = rows[0].current_amount;
+        if(rows.length > 0) {
+            const lastAmountPart = rows[0].current_amount;
             if (lastAmountPart > 0) {
                 result_total = parseInt(lastAmountPart) - parseInt(req.body.amount);
                 const stockInput = {
@@ -41,8 +44,11 @@ router.post('/expense-part', function (req, res, next) {
                         res.render('index', {message: "Что-то пошло не так"});
                     }
                 });
+            } else {
+                res.render('index', {message: "Данной детали нет на складе"})
+            }
         } else {
-            res.render('index', {message: "Нельзя израсходовать больше, чем имеется на складе"})
+            res.render('index', {message: "Данного"})
         }
     });
 });
