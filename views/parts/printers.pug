@@ -9,7 +9,16 @@ block content
             option(value="Китайцы") Китайцы
             option(value="177") 177
             option(value="Конь") Конь
-        button#btn-signup.btn.btn-info(type="submit") Поиск
+        button.btn.btn-info(type="submit") Поиск
+    h4 Выгрузить в excel
+    form.form-horizontal(role="form" method="post" action="/parts/printers/excel" class="form_mailing")
+        select#nameForExcel(name="nameforexcel")
+            option(value="Шарик") Шарик
+            option(value="Рик") Рик
+            option(value="Китайцы") Китайцы
+            option(value="177") 177
+            option(value="Конь") Конь
+        button.btn.btn-info(type="submit") Выгрузить
     table(style="width:100%")
         tr
             th Серийный номер

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    form(method="post" action="/searchParts/searchParts")
+        label(for="name") Название принтера
+        select#name(name="name")
+            option(value="Шарик") Шарик
+            option(value="Рик") Рик
+            option(value="Китайцы") Китайцы
+            option(value="177") 177
+            option(value="Конь") Конь
+        label(for="part") Запчасть
+        input#mail(list="part" name="part")
+        datalist#part
+            if data.length
+                each item in data
+                    option(value=item.title_rus) #{item.title} #{item.serial_id}
+        input(type="submit" value="Поиск")
+        table(style="width:100%")
+            tr
+                th Серийный номер
+                th Название на русском
+                th Название на латыни
+                th Принтер
+                th Количество
+                if data.length
+                    each item in data
+                        tr
+                            td=item.serial_id
+                            td=item.title_rus
+                            td=item.title_latin
+                            td=item.printer
+                            td=item.current_amount

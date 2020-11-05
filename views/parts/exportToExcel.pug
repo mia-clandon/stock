@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+    h4 Текущее количество запчастей для каждого принтера
+    form.form-horizontal(role="form" method="post" action="/parts/exportToExcel/excel" class="form_mailing")
+        select#nameForExcel(name="nameforexcel")
+            option(value="Шарик") Шарик
+            option(value="Рик") Рик
+            option(value="Китайцы") Китайцы
+            option(value="177") 177
+            option(value="Конь") Конь
+        button.btn.btn-info(type="submit") Выгрузить
+    h4 Приход/расход запчастей за весь период для каждого принтера
+        form.form-horizontal(role="form" method="post" action="/parts/exportToExcel/excelAll" class="form_mailing")
+            select#nameForExcelMonth(name="nameforexcelall")
+                option(value="Шарик") Шарик
+                option(value="Рик") Рик
+                option(value="Китайцы") Китайцы
+                option(value="177") 177
+                option(value="Конь") Конь
+            button.btn.btn-info(type="submit") Выгрузить
+    h4 Приход/расход запчастей за месяц для каждого принтера
+        form.form-horizontal(role="form" method="post" action="/parts/exportToExcel/excelAllMonth" class="form_mailing")
+            select#nameForExcelMonthAll(name="nameforexcelallmonth")
+                option(value="Шарик") Шарик
+                option(value="Рик") Рик
+                option(value="Китайцы") Китайцы
+                option(value="177") 177
+                option(value="Конь") Конь
+            button.btn.btn-info(type="submit") Выгрузить
+    h4 Расход запчастей за месяц для каждого принтера
+        form.form-horizontal(role="form" method="post" action="/parts/exportToExcel/excelAllExpenseMonth" class="form_mailing")
+            select#nameForExcelExpense(name="nameforexcelallexpense")
+                option(value="Шарик") Шарик
+                option(value="Рик") Рик
+                option(value="Китайцы") Китайцы
+                option(value="177") 177
+                option(value="Конь") Конь
+            button.btn.btn-info(type="submit") Выгрузить
+    h4 Приход запчастей за месяц для каждого принтера
+        form.form-horizontal(role="form" method="post" action="/parts/exportToExcel/excelAllAddMonth" class="form_mailing")
+            select#nameForExcelAdd(name="nameforexcelalladd")
+                option(value="Шарик") Шарик
+                option(value="Рик") Рик
+                option(value="Китайцы") Китайцы
+                option(value="177") 177
+                option(value="Конь") Конь
+            button.btn.btn-info(type="submit") Выгрузить
+

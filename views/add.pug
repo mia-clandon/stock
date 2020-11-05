@@ -9,10 +9,12 @@ block content
             option(value="Китайцы") Китайцы
             option(value="177") 177
             option(value="Конь") Конь
-        label(for="part") Название запчасти
-        select#part(name="part")
-            each item in data
-                option(value=item.title_rus) #{item.title_rus}
+        label(for="part") Запчасть
+        input#mail(list="part" name="part")
+        datalist#part
+                if data.length
+                    each item in data
+                        option(value=item.title_rus) #{item.title} #{item.serial_id}
         label(for="amount") Количество
         input#amount(type="number" name="amount" value="")
         label(for="date") Дата

@@ -19,6 +19,8 @@ const addNewPartsRouter = require('./routes/parts/addNewPart');
 const showStockAddRouter = require('./routes/stock-add');
 const showStockExpenseRouter = require('./routes/stock-expense');
 const showPrintersPartsRouter = require('./routes/parts/printers');
+const getExportToExcel = require('./routes/parts/exportToExcel');
+const searchParts = require('./routes/searchParts');
 
 const app = express();
 
@@ -50,6 +52,8 @@ app.use('/parts/add-new-parts', addNewPartsRouter);
 app.use('/stock-add', showStockAddRouter);
 app.use('/stock-expense', showStockExpenseRouter);
 app.use('/parts/printers', showPrintersPartsRouter);
+app.use('/parts/exportToExcel', getExportToExcel);
+app.use('/searchParts', searchParts);
 
 
 app.use(function(req, res, next) {
